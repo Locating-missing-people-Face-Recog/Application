@@ -128,3 +128,7 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+FairFace_Dataset.zip
+
+Model/FairFace/train
+Model/FairFace/val
