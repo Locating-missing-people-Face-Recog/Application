@@ -132,3 +132,4 @@ FairFace_Dataset.zip
 
 Model/FairFace/train
 Model/FairFace/val
+Model/vgg_face_weights.h5
