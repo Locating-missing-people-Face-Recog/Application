@@ -24,7 +24,7 @@ class PostgresConnection(PostgresConfig):
                 user=self.PG_USER,
                 password=self.PG_PASSWORD,
                 host=self.PG_HOST,
-                port=5432
+                port=5050
             )
             self.connection.autocommit = False
             return self.connection
