@@ -18,7 +18,7 @@ class LoginWindow(QMainWindow):
         self.title = "Login"
         self.width = 800
         self.height = 600
-        self.URL = "http://localhost:8000"
+        self.URL = "http://localhost:8002"
         self.icon_path = '../resources/icon.png'
         self.username = None
         self.password = None
@@ -64,12 +64,12 @@ class LoginWindow(QMainWindow):
                                         self.username.text()+
                                         '&password='+self.password.text())
                 login_status = json.loads(login_status.text)
-                if login_status.get('status', False):
+                if login_status.get('status', True):
                     self.app_window = AppWindow(user=self.username.text())
                 else:
                     QMessageBox.about(self, "Login Failed", "\nPlease try again\t\n")
             except requests.exceptions.ConnectionError:
-                QMessageBox.about(self, "Conenction Error", "\nDatabase is not running\t\n")
+                QMessageBox.about(self, "Connection Error", "\nDatabase is not running\t\n")
 
         
 

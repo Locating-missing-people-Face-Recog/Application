@@ -194,5 +194,5 @@ class AppWindow(QMainWindow):
 if __name__ == '__main__':
 
     app = QApplication(sys.argv)
-    w = AppWindow('gagan')
+    w = AppWindow('findpeople')
     sys.exit(app.exec())

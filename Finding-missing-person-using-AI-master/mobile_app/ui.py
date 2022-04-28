@@ -115,7 +115,7 @@ class MobileApp(QMainWindow):
         -------
          list
         """
-        URL = "http://localhost:8002/image"
+        URL = "http://localhost:8000/image"
         f = [('image', open(image_url, 'rb'))]
         try:
             result = requests.post(URL, files=f)
@@ -171,7 +171,7 @@ class MobileApp(QMainWindow):
             return None
         
     def save_to_db(self, entries):
-        URL = "http://localhost:8000/user_submission"
+        URL = "http://localhost:8002/user_submission"
         headers = {'Content-Type': 'application/json',
                    'Accept':'application/json'}
 

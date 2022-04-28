@@ -8,7 +8,7 @@ import psycopg2
 class PostgresConfig():
     PG_DATABASE = os.environ.get('PG_DATABASE', 'postgres')
     PG_USER = os.environ.get('PG_USER', 'postgres')
-    PG_PASSWORD = os.environ.get('PG_PASSWORD', 'docker')
+    PG_PASSWORD = os.environ.get('PG_PASSWORD', 'postgres')
     PG_HOST = os.environ.get('PG_HOST', 'localhost')
 
 
@@ -24,7 +24,7 @@ class PostgresConnection(PostgresConfig):
                 user=self.PG_USER,
                 password=self.PG_PASSWORD,
                 host=self.PG_HOST,
-                port=5050
+                port=5432
             )
             self.connection.autocommit = False
             return self.connection
