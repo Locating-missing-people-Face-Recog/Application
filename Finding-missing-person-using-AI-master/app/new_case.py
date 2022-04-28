@@ -126,13 +126,13 @@ class NewCase(QMainWindow):
 
     def get_facial_points(self, image_url) -> list:
         """
-        This method passes the base64 form iamge to get facialkey points.
+        This method passes the base64 form image to get facialkey points.
 
         Returns
         -------
          list
         """
-        URL = "http://localhost:8002/image"
+        URL = "http://localhost:8000/image"
         f = [('image', open(image_url, 'rb'))]
         try:
             result = requests.post(URL, files=f)
@@ -190,7 +190,7 @@ class NewCase(QMainWindow):
             return None
         
     def save_to_db(self, entries):
-        URL = "http://localhost:8000/new_case"
+        URL = "http://localhost:8002/new_case"
         headers = {'Content-Type': 'application/json',
                    'Accept':'application/json'}
 

@@ -3,6 +3,8 @@ import requests
 import json
 import base64
 import io
+import logging
+logging.basicConfig(level=logging.INFO)
 
 from PIL import Image
 import numpy as np
@@ -78,7 +80,7 @@ class AppWindow(QMainWindow):
             QMessageBox.about(self, "Error", output['message'])
 
     def view_confirmed_cases(self):
-        URL = "http://localhost:8000/get_confirmed_cases?submitted_by="+self.user
+        URL = "http://localhost:8002/get_confirmed_cases?submitted_by="+self.user
         try:
             cases = json.loads(requests.get(URL).text)
             if cases == []:
@@ -90,7 +92,7 @@ class AppWindow(QMainWindow):
 
 
     def view_submitted_cases(self):
-        URL = "http://localhost:8000/get_submitted_cases?submitted_by="+self.user
+        URL = "http://localhost:8002/get_submitted_cases?submitted_by="+self.user
         try:
             cases = json.loads(requests.get(URL).text)
             if cases == []:
@@ -108,8 +110,9 @@ class AppWindow(QMainWindow):
         list_.move(40, 40)
         model = QStandardItemModel(list_)
         # model.setHorizontalHeaderLabels(['Submitted Cases'])
-
+        #logging.info(result)
         for case_detail in result:
+            #logging.info(len(case_detail), case_detail)
             image = self.decode_base64(case_detail[7])
             item = QStandardItem(
                     " Name: " + case_detail[2] +
@@ -143,7 +146,7 @@ class AppWindow(QMainWindow):
 
         for case_id, submission_list in result.items():
             # Change status of Matched Case
-            requests.get(f"http://localhost:8000/change_found_status?case_id='{case_id}'")
+            requests.get(f"http://localhost:8002/change_found_status?case_id='{case_id}'")
             case_details = self.get_details(case_id, "case")
             for submission_id in submission_list:
                 submission_details = self.get_details(submission_id, "public_submission")
@@ -171,9 +174,9 @@ class AppWindow(QMainWindow):
     
     def get_details(self, case_id: str, type: str):
         if type == 'public_submission':
-            URL = f"http://localhost:8000/get_user_details?case_id='{case_id}'"
+            URL = f"http://localhost:8002/get_user_details?case_id='{case_id}'"
         else:
-            URL = f"http://localhost:8000/get_case_details?case_id='{case_id}'"
+            URL = f"http://localhost:8002/get_case_details?case_id='{case_id}'"
         try:
             result = requests.get(URL)
             if result.status_code == 200:
