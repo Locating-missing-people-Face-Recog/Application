@@ -33,7 +33,7 @@ class LoginWindow(QMainWindow):
         self.get_password()
 
         login_bt = QPushButton("Login", self)
-        login_bt.move(340, 250)
+        login_bt.move(190, 350)
         login_bt.clicked.connect(self.login)
 
         self.show()
@@ -41,19 +41,23 @@ class LoginWindow(QMainWindow):
     def get_username(self):
         username_label = QLabel(self)
         username_label.setText("Username: ")
-        username_label.move(190, 90)
+        username_label.move(190, 150)
+#if change move(190, 100) as (290, 100) username moves right,(190, 300)moves username down
 
         self.username = QLineEdit(self)
-        self.username.move(370, 170)
+        self.username.move(190, 200)
+##if change move(370, 200) as (70, 250) username box moves left,(370, 10)moves username box up
     
     def get_password(self):
         password_label = QLabel(self)
         password_label.setText("Password: ")
-        password_label.move(190, 200)
+        password_label.move(190, 250)
+#if change move(190, 250) as (290, 250) password moves right,(190, 300)moves password down
 
         self.password = QLineEdit(self)
         self.password.setEchoMode(QLineEdit.Password)
-        self.password.move(370, 200)
+        self.password.move(190, 300)
+#if change move(370, 200) as (70, 200) password box moves left,(370, 10)moves password box up
     
     def login(self):
         if not self.password.text() or not self.username.text():
@@ -81,7 +85,7 @@ style = """
         }
         QLabel{
             color: Brown;
-            font-size: 25px;
+            font-size: 22px;
         }
         QListView
         {
@@ -95,7 +99,7 @@ style = """
         QPushButton
         {
             color: white;
-            background: #0577a8;
+            background: CadetBlue;
             border: 1px #DADADA solid;
             padding: 5px 10px;
             border-radius: 2px;
@@ -110,9 +114,10 @@ style = """
         }
         QLineEdit {
             padding: 1px;
-            color: #fff;
+            color: black;
             border-style: solid;
             border: 2px solid #fff;
+            width: 300px;
             border-radius: 8px;
         }
     """
