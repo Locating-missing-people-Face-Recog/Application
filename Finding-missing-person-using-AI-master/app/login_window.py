@@ -1,13 +1,13 @@
-import sys
-import requests
 import json
+import sys
 
+import requests
 from PyQt5 import QtGui
-from PyQt5.QtCore import Qt, QSize
-from PyQt5.QtGui import QPixmap, QIcon
-from PyQt5.QtGui import QStandardItemModel, QStandardItem
-from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QListView
-from PyQt5.QtWidgets import QMessageBox, QListWidget, QLabel, QLineEdit
+from PyQt5.QtCore import QSize, Qt
+from PyQt5.QtGui import QIcon, QPixmap, QStandardItem, QStandardItemModel
+from PyQt5.QtWidgets import (QApplication, QLabel, QLineEdit, QListView,
+                             QListWidget, QMainWindow, QMessageBox,
+                             QPushButton)
 
 from app_window import AppWindow
 
@@ -18,7 +18,7 @@ class LoginWindow(QMainWindow):
         self.title = "Login"
         self.width = 800
         self.height = 600
-        self.URL = "http://localhost:8002"
+        self.URL = "http://localhost:8000"
         self.icon_path = '../resources/icon.png'
         self.username = None
         self.password = None
@@ -41,7 +41,7 @@ class LoginWindow(QMainWindow):
     def get_username(self):
         username_label = QLabel(self)
         username_label.setText("Username: ")
-        username_label.move(310, 170)
+        username_label.move(190, 90)
 
         self.username = QLineEdit(self)
         self.username.move(370, 170)
@@ -49,7 +49,7 @@ class LoginWindow(QMainWindow):
     def get_password(self):
         password_label = QLabel(self)
         password_label.setText("Password: ")
-        password_label.move(310, 200)
+        password_label.move(190, 200)
 
         self.password = QLineEdit(self)
         self.password.setEchoMode(QLineEdit.Password)
@@ -64,12 +64,12 @@ class LoginWindow(QMainWindow):
                                         self.username.text()+
                                         '&password='+self.password.text())
                 login_status = json.loads(login_status.text)
-                if login_status.get('status', True):
+                if login_status.get('status', False):
                     self.app_window = AppWindow(user=self.username.text())
                 else:
                     QMessageBox.about(self, "Login Failed", "\nPlease try again\t\n")
             except requests.exceptions.ConnectionError:
-                QMessageBox.about(self, "Connection Error", "\nDatabase is not running\t\n")
+                QMessageBox.about(self, "Conenction Error", "\nDatabase is not running\t\n")
 
         
 
@@ -77,10 +77,11 @@ class LoginWindow(QMainWindow):
 app = QApplication(sys.argv)
 style = """
         QWidget{
-            background: #262D37;
+            background:#F5F5DC;
         }
         QLabel{
-            color: #fff;
+            color: Brown;
+            font-size: 25px;
         }
         QListView
         {

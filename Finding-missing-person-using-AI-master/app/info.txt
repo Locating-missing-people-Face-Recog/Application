@@ -1,0 +1,4 @@
+QPushButton is for login button
+QLineEdit          the white boxes
+QWidget            Background colour
+QLabel             username and pass font colour
