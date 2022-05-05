@@ -33,7 +33,7 @@ class LoginWindow(QMainWindow):
         self.get_password()
 
         login_bt = QPushButton("Login", self)
-        login_bt.move(190, 350)
+        login_bt.move(190, 365)
         login_bt.clicked.connect(self.login)
 
         self.show()
@@ -45,6 +45,7 @@ class LoginWindow(QMainWindow):
 #if change move(190, 100) as (290, 100) username moves right,(190, 300)moves username down
 
         self.username = QLineEdit(self)
+        self.username.resize(210,40)
         self.username.move(190, 200)
 ##if change move(370, 200) as (70, 250) username box moves left,(370, 10)moves username box up
     
@@ -55,6 +56,7 @@ class LoginWindow(QMainWindow):
 #if change move(190, 250) as (290, 250) password moves right,(190, 300)moves password down
 
         self.password = QLineEdit(self)
+        self.password.resize(210,40)
         self.password.setEchoMode(QLineEdit.Password)
         self.password.move(190, 300)
 #if change move(370, 200) as (70, 200) password box moves left,(370, 10)moves password box up

@@ -38,6 +38,11 @@ class NewCase(QMainWindow):
                 The logged in user
         """
         super().__init__()
+        self.setStyleSheet("""
+        QMainWindow {
+            background: Thistle;
+            }
+        """)
         self.title = "Register New Case"
         self.name = None
         self.age = None
@@ -66,13 +71,18 @@ class NewCase(QMainWindow):
         self.setWindowTitle(self.title)
 
         upload_image_button = QPushButton("Upload Image", self)
-        upload_image_button.resize(150, 50)
+        upload_image_button.setStyleSheet("""
+        QPushButton {
+            background: WhiteSmoke;
+            }
+        """)
+        upload_image_button.resize(250, 50)
         upload_image_button.move(self._x_axis, 20)
         upload_image_button.clicked.connect(self.openFileNameDialog)
 
         save_button = QPushButton("Save", self)
-        save_button.resize(150, 50)
-        save_button.move(self._x_axis, 350)
+        save_button.resize(200, 50)
+        save_button.move(500, 350)
         save_button.clicked.connect(self.save)
 
         self.get_name()
@@ -86,21 +96,31 @@ class NewCase(QMainWindow):
         This method reads the input name from text field in GUI.
         """
         self.name_label = QLabel(self)
+        self.name_label.setStyleSheet("""
+        QLabel {
+            font-size: 30px;
+            }
+        """)
         self.name_label.setText('Name:')
         self.name_label.move(self._x_axis, 100)
         self.name = QLineEdit(self)
-        self.name.move(self._x_axis + 50, 100)
+        self.name.move(600, 100)
 
     def get_age(self):
         """
         This method reads the age from text field in GUI.
         """
         self.age_label = QLabel(self)
+        self.age_label.setStyleSheet("""
+        QLabel {
+            font-size: 30px;
+            }
+        """)
         self.age_label.setText('Age:')
         self.age_label.move(self._x_axis, 150)
 
         self.age = QLineEdit(self)
-        self.age.move(self._x_axis + 50, 150)
+        self.age.move(600, 150)
 
     def get_fname(self):
         """
