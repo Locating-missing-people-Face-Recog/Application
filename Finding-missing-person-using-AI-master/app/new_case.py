@@ -74,6 +74,7 @@ class NewCase(QMainWindow):
         upload_image_button.setStyleSheet("""
         QPushButton {
             background: WhiteSmoke;
+            font-size: 25px
             }
         """)
         upload_image_button.resize(250, 50)
@@ -81,7 +82,13 @@ class NewCase(QMainWindow):
         upload_image_button.clicked.connect(self.openFileNameDialog)
 
         save_button = QPushButton("Save", self)
-        save_button.resize(200, 50)
+        save_button.resize(250, 55)
+        save_button.setStyleSheet("""
+        QPushButton {
+            background: WhiteSmoke;
+            font-size: 25px
+            }
+        """)
         save_button.move(500, 350)
         save_button.clicked.connect(self.save)
 
@@ -98,13 +105,20 @@ class NewCase(QMainWindow):
         self.name_label = QLabel(self)
         self.name_label.setStyleSheet("""
         QLabel {
-            font-size: 30px;
+            font-size: 25px;
             }
         """)
         self.name_label.setText('Name:')
         self.name_label.move(self._x_axis, 100)
         self.name = QLineEdit(self)
-        self.name.move(600, 100)
+        self.name.setStyleSheet("""
+        QLineEdit {
+            background: Lightgray;
+            border-color: Lightgray;
+            }
+        """)
+        self.name.resize(160,30)
+        self.name.move(590, 102)
 
     def get_age(self):
         """
@@ -113,36 +127,64 @@ class NewCase(QMainWindow):
         self.age_label = QLabel(self)
         self.age_label.setStyleSheet("""
         QLabel {
-            font-size: 30px;
+            font-size: 25px;
             }
         """)
         self.age_label.setText('Age:')
         self.age_label.move(self._x_axis, 150)
-
         self.age = QLineEdit(self)
-        self.age.move(600, 150)
+        self.age.setStyleSheet("""
+        QLineEdit {
+            background: Lightgray;
+            border-color: Lightgray;
+            }
+        """)
+        self.age.resize(160,30)
+        self.age.move(590, 152)
 
     def get_fname(self):
         """
         This method reads Father's name from text field in GUI.
         """
         self.fname_label = QLabel(self)
+        self.fname_label.setStyleSheet("""
+        QLabel {
+            font-size: 25px;
+            }
+        """)
         self.fname_label.setText('Father\'s\n Name:')
         self.fname_label.move(self._x_axis, 200)
-
         self.father_name = QLineEdit(self)
-        self.father_name.move(self._x_axis + 50, 200)
+        self.father_name.setStyleSheet("""
+        QLineEdit {
+            background: Lightgray;
+            border-color: Lightgray;
+            }
+        """)
+        self.father_name.resize(160,30)
+        self.father_name.move(590, 202)
 
     def get_mob(self):
         """
         This method reads mob number from text field in GUI.
         """
         self.mob_label = QLabel(self)
+        self.mob_label.setStyleSheet("""
+        QLabel {
+            font-size: 25px;
+            }
+        """)
         self.mob_label.setText('Mobile:')
-        self.mob_label.move(self._x_axis, 250)
-
+        self.mob_label.move(self._x_axis, 280)
         self.mob = QLineEdit(self)
-        self.mob.move(self._x_axis + 50, 250)
+        self.mob.setStyleSheet("""
+        QLineEdit {
+            background: Lightgray;
+            border-color: Lightgray;
+            }
+        """)
+        self.mob.resize(160,30)
+        self.mob.move(590, 280)
 
     def get_facial_points(self, image_url) -> list:
         """

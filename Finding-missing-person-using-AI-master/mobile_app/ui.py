@@ -42,6 +42,7 @@ class MobileApp(QMainWindow):
         self.name = None
         self.mobile = None
         self.image = None
+        self.email = None
         self.key_points = None
         self.initialize()
 
@@ -79,7 +80,7 @@ class MobileApp(QMainWindow):
         This method reads the input name from text field in GUI.
         """
         self.name_label = QLabel(self)
-        self.name_label.setText('Your Name:')
+        self.name_label.setText('Name:')
         self.name_label.move(170, 20)
 
         self.name = QLineEdit(self)
@@ -90,7 +91,7 @@ class MobileApp(QMainWindow):
         This method reads mob number from text field in GUI.
         """
         self.mobile_label = QLabel(self)
-        self.mobile_label.setText('Mobile:')
+        self.mobile_label.setText('Mobile No:')
         self.mobile_label.move(170, 90)
 
         self.mobile = QLineEdit(self)
@@ -101,11 +102,47 @@ class MobileApp(QMainWindow):
         This method reads the input name from text field in GUI.
         """
         self.location_label = QLabel(self)
-        self.location_label.setText('Location:')
+#changed location to address since we'll be needing the address of the person registering
+        self.location_label.setText('Address:')
         self.location_label.move(150, 160)
 
         self.location = QLineEdit(self)
         self.location.move(150, 190)
+
+# Below, adding other details that we're adding new
+    
+    def get_email_id(self):
+        """
+        This method reads Email id from text field in GUI.
+        """
+        self.email_label = QLabel(self)
+        self.email_label.setText('Email id:')
+        self.memail_label.move(170, 90)
+
+        self.email = QLineEdit(self)
+        self.email.move(150, 120)
+
+    def get_aadhar_num(self):
+        """
+        This method reads aadhar number from text field in GUI.
+        """
+        self.aadhar_label = QLabel(self)
+        self.aadhar_label.setText('aadhar No:')
+        self.aadhar_label.move(170, 90)
+
+        self.aadhar = QLineEdit(self)
+        self.aadhar.move(150, 120)
+        
+    def get_Photoid_proof(self):
+        """
+        This method reads Photoid proof from text field in GUI.
+        """
+        self.Photoid_label = QLabel(self)
+        self.Photoide_label.setText('Photoid proof:')
+        self.Photoid_label.move(170, 90)
+
+        self.Photoid = QLineEdit(self)
+        self.Photoid.move(150, 120)
 
     def get_facial_points(self, image_url) -> list:
         """
@@ -166,6 +203,8 @@ class MobileApp(QMainWindow):
             entries['name'] = self.name.text()
             entries['location'] = self.location.text()
             entries['mobile'] = self.mobile.text()
+            entries['email'] = self.email.text()
+            entries['aadhar'] = self.aadhar.text()
             return entries
         else:
             return None
@@ -219,7 +258,7 @@ class MobileApp(QMainWindow):
 app = QApplication(sys.argv)
 style = """
         QWidget{
-            background: #262D37;
+            background: LightBlue;
         }
         QLabel{
             color: #fff;
