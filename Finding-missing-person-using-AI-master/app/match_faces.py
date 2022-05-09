@@ -9,7 +9,7 @@ import numpy as np
 
 
 def get_user_submitted_data(status="NR"):
-    url = 'http://localhost:8000/user_submission'
+    url = 'http://localhost:8002/user_submission'
     try:
         result = requests.get(url)
         if result.status_code == 200:
