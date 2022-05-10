@@ -70,9 +70,13 @@ class MobileApp(QMainWindow):
         save_bt.move(150, 640)
         save_bt.clicked.connect(self.save)
 
+        #call the functions to display the labels and edit text
         self.get_name()
         self.get_mobile_num()
         self.get_location()
+        self.get_email_id()
+        self.get_aadhar_num()
+
         self.show()
 
     def get_name(self):
@@ -117,10 +121,10 @@ class MobileApp(QMainWindow):
         """
         self.email_label = QLabel(self)
         self.email_label.setText('Email id:')
-        self.memail_label.move(170, 90)
+        self.email_label.move(170, 200)
 
         self.email = QLineEdit(self)
-        self.email.move(150, 120)
+        self.email.move(150, 220)
 
     def get_aadhar_num(self):
         """
@@ -128,21 +132,21 @@ class MobileApp(QMainWindow):
         """
         self.aadhar_label = QLabel(self)
         self.aadhar_label.setText('aadhar No:')
-        self.aadhar_label.move(170, 90)
+        self.aadhar_label.move(170, 220)
 
         self.aadhar = QLineEdit(self)
-        self.aadhar.move(150, 120)
+        self.aadhar.move(150, 230)
         
     def get_Photoid_proof(self):
         """
         This method reads Photoid proof from text field in GUI.
         """
         self.Photoid_label = QLabel(self)
-        self.Photoide_label.setText('Photoid proof:')
-        self.Photoid_label.move(170, 90)
+        self.Photoid_label.setText('Photoid proof:')
+        self.Photoid_label.move(170, 250)
 
         self.Photoid = QLineEdit(self)
-        self.Photoid.move(150, 120)
+        self.Photoid.move(150, 260)
 
     def get_facial_points(self, image_url) -> list:
         """

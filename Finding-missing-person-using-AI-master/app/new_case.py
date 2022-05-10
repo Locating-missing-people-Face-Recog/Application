@@ -152,8 +152,9 @@ class NewCase(QMainWindow):
             font-size: 25px;
             }
         """)
-        self.fname_label.setText('Father\'s\n Name:')
+        self.fname_label.setText("Father's \nName:")
         self.fname_label.move(self._x_axis, 200)
+        self.fname_label.adjustSize()
         self.father_name = QLineEdit(self)
         self.father_name.setStyleSheet("""
         QLineEdit {

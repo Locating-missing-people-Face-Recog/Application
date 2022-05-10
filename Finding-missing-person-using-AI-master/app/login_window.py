@@ -7,7 +7,7 @@ from PyQt5.QtCore import QSize, Qt
 from PyQt5.QtGui import QIcon, QPixmap, QStandardItem, QStandardItemModel
 from PyQt5.QtWidgets import (QApplication, QLabel, QLineEdit, QListView,
                              QListWidget, QMainWindow, QMessageBox,
-                             QPushButton)
+                             QPushButton,QGroupBox,QFormLayout)
 
 from app_window import AppWindow
 
@@ -16,25 +16,36 @@ class LoginWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.title = "Login"
+        
         self.width = 800
         self.height = 600
         self.URL = "http://localhost:8000"
         self.icon_path = '../resources/icon.png'
         self.username = None
         self.password = None
-
+        self.createFormGroupBox()
         self.initialize()
 
-    def initialize(self):
-        self.setWindowIcon(QtGui.QIcon(self.icon_path))
-        self.setWindowTitle(self.title)
-        self.setFixedSize(self.width, self.height)
+
+    def createFormGroupBox(self):
+        self.formGroupBox = QGroupBox("Form layout")
+        layout = QFormLayout()
         self.get_username()
         self.get_password()
 
         login_bt = QPushButton("Login", self)
         login_bt.move(190, 365)
         login_bt.clicked.connect(self.login)
+        
+        self.formGroupBox.setLayout(layout)
+        self.show()
+
+    def initialize(self):
+        self.setWindowIcon(QtGui.QIcon(self.icon_path))
+        self.setWindowTitle(self.title)
+        self.setFixedSize(self.width, self.height)
+        
+        
 
         self.show()
 
@@ -75,7 +86,7 @@ class LoginWindow(QMainWindow):
                 else:
                     QMessageBox.about(self, "Login Failed", "\nPlease try again\t\n")
             except requests.exceptions.ConnectionError:
-                QMessageBox.about(self, "Conenction Error", "\nDatabase is not running\t\n")
+                QMessageBox.about(self, "Connection Error", "\nDatabase is not running\t\n")
 
         
 
