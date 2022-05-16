@@ -19,7 +19,7 @@ class LoginWindow(QMainWindow):
         
         self.width = 800
         self.height = 600
-        self.URL = "http://localhost:8000"
+        self.URL = "http://localhost:8002"
         self.icon_path = '../resources/icon.png'
         self.username = None
         self.password = None
