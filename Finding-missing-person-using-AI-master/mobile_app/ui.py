@@ -43,6 +43,7 @@ class MobileApp(QMainWindow):
         self.mobile = None
         self.image = None
         self.email = None
+        self.Photoid = None
         self.key_points = None
         self.initialize()
 
@@ -63,7 +64,7 @@ class MobileApp(QMainWindow):
         self.setWindowTitle(self.title)
 
         upload_image_bt = QPushButton("Image", self)
-        upload_image_bt.move(150, 250)
+        upload_image_bt.move(150, 450)
         upload_image_bt.clicked.connect(self.openFileNameDialog)
 
         save_bt = QPushButton("Save ", self)
@@ -76,6 +77,7 @@ class MobileApp(QMainWindow):
         self.get_location()
         self.get_email_id()
         self.get_aadhar_num()
+        self.get_Photoid_proof()
 
         self.show()
 
@@ -85,10 +87,11 @@ class MobileApp(QMainWindow):
         """
         self.name_label = QLabel(self)
         self.name_label.setText('Name:')
-        self.name_label.move(170, 20)
+        self.name_label.move(130, 20)
 
         self.name = QLineEdit(self)
-        self.name.move(150, 50)
+        self.name.move(130, 50)
+        self.name.resize(150, 30)
 
     def get_mobile_num(self):
         """
@@ -96,10 +99,11 @@ class MobileApp(QMainWindow):
         """
         self.mobile_label = QLabel(self)
         self.mobile_label.setText('Mobile No:')
-        self.mobile_label.move(170, 90)
+        self.mobile_label.move(130, 90)
 
         self.mobile = QLineEdit(self)
-        self.mobile.move(150, 120)
+        self.mobile.move(130, 120)
+        self.mobile.resize(150, 30)
 
     def get_location(self):
         """
@@ -108,10 +112,11 @@ class MobileApp(QMainWindow):
         self.location_label = QLabel(self)
 #changed location to address since we'll be needing the address of the person registering
         self.location_label.setText('Address:')
-        self.location_label.move(150, 160)
+        self.location_label.move(130, 160)
 
         self.location = QLineEdit(self)
-        self.location.move(150, 190)
+        self.location.move(130, 190)
+        self.location.resize(150, 30)
 
 # Below, adding other details that we're adding new
     
@@ -121,10 +126,11 @@ class MobileApp(QMainWindow):
         """
         self.email_label = QLabel(self)
         self.email_label.setText('Email id:')
-        self.email_label.move(170, 200)
+        self.email_label.move(130, 230)
 
         self.email = QLineEdit(self)
-        self.email.move(150, 220)
+        self.email.move(130, 260)
+        self.email.resize(150, 30)
 
     def get_aadhar_num(self):
         """
@@ -132,10 +138,11 @@ class MobileApp(QMainWindow):
         """
         self.aadhar_label = QLabel(self)
         self.aadhar_label.setText('aadhar No:')
-        self.aadhar_label.move(170, 220)
+        self.aadhar_label.move(130, 300)
 
         self.aadhar = QLineEdit(self)
-        self.aadhar.move(150, 230)
+        self.aadhar.move(130, 330)
+        self.aadhar.resize(150, 30)
         
     def get_Photoid_proof(self):
         """
@@ -143,10 +150,11 @@ class MobileApp(QMainWindow):
         """
         self.Photoid_label = QLabel(self)
         self.Photoid_label.setText('Photoid proof:')
-        self.Photoid_label.move(170, 250)
+        self.Photoid_label.move(130, 370)
 
         self.Photoid = QLineEdit(self)
-        self.Photoid.move(150, 260)
+        self.Photoid.move(130, 400)
+        self.Photoid.resize(150, 30)
 
     def get_facial_points(self, image_url) -> list:
         """
